@@ -18,6 +18,7 @@
 		A5C7DCB91870C5140015EB06 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB31870C5140015EB06 /* Credits.rtf */; };
 		A5C7DCBA1870C5140015EB06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB51870C5140015EB06 /* InfoPlist.strings */; };
 		A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB71870C5140015EB06 /* Images.xcassets */; };
+		A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		A5C7DCB41870C5140015EB06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A5C7DCB61870C5140015EB06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5C7DCB71870C5140015EB06 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRClientManager.h; sourceTree = "<group>"; };
+		A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRClientManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				A5C7DC8E1870C4620015EB06 /* IGRAppDelegate.h */,
 				A5C7DC8F1870C4620015EB06 /* IGRAppDelegate.m */,
 				A5C7DC831870C4620015EB06 /* Supporting Files */,
+				A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */,
+				A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */,
 			);
 			path = AirDock;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */,
 				A5C7DC891870C4620015EB06 /* main.m in Sources */,
 				A5C7DC901870C4620015EB06 /* IGRAppDelegate.m in Sources */,
 			);
