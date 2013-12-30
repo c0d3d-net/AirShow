@@ -27,8 +27,6 @@
     _isConnected = NO;
 	
 	[self search:nil];
-	
-	[servicesController addObserver:self forKeyPath:@"selectionIndexes" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (IBAction)search:(id)sender
@@ -41,11 +39,6 @@
 	[self disconnectFromDevice];
 	
     NSNetService *remoteService = servicesController.selectedObjects.lastObject;
-	
-	if (!remoteService && [servicesController.arrangedObjects count])
-	{
-		servicesController.selectionIndex = 0;
-	}
 	
 	if (remoteService && remoteService != self.connectedService)
 	{
@@ -73,6 +66,17 @@
 	NSLog(@"%s: Added service: %@", __func__, aService);
 	
     [servicesController addObject:aService];
+	
+	if (!more && !self.connectedService)
+	{
+		static dispatch_once_t onceToken;
+		dispatch_once(&onceToken, ^
+		{
+			[servicesController addObserver:self forKeyPath:@"selectionIndexes" options:NSKeyValueObservingOptionNew context:nil];
+		});
+		
+		servicesController.selectionIndex = 0;
+	}
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aBrowser didRemoveService:(NSNetService *)aService moreComing:(BOOL)more

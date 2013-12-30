@@ -19,6 +19,10 @@
 		A5C7DCBA1870C5140015EB06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB51870C5140015EB06 /* InfoPlist.strings */; };
 		A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB71870C5140015EB06 /* Images.xcassets */; };
 		A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */; };
+		A5C7DCC21871572B0015EB06 /* off.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCC01871572B0015EB06 /* off.pdf */; };
+		A5C7DCC31871572B0015EB06 /* on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCC11871572B0015EB06 /* on.pdf */; };
+		A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */; };
+		A5C7DCCC18715ED60015EB06 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCCB18715ED60015EB06 /* bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,11 @@
 		A5C7DCB71870C5140015EB06 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRClientManager.h; sourceTree = "<group>"; };
 		A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRClientManager.m; sourceTree = "<group>"; };
+		A5C7DCC01871572B0015EB06 /* off.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = off.pdf; sourceTree = "<group>"; };
+		A5C7DCC11871572B0015EB06 /* on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = on.pdf; sourceTree = "<group>"; };
+		A5C7DCC818715EB70015EB06 /* IGRDragAndDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRDragAndDropView.h; sourceTree = "<group>"; };
+		A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRDragAndDropView.m; sourceTree = "<group>"; };
+		A5C7DCCB18715ED60015EB06 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +128,12 @@
 		A5C7DC821870C4620015EB06 /* AirDock */ = {
 			isa = PBXGroup;
 			children = (
+				A5C7DCC718715EB70015EB06 /* CustomView */,
 				A5C7DC8E1870C4620015EB06 /* IGRAppDelegate.h */,
 				A5C7DC8F1870C4620015EB06 /* IGRAppDelegate.m */,
-				A5C7DC831870C4620015EB06 /* Supporting Files */,
 				A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */,
 				A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */,
+				A5C7DC831870C4620015EB06 /* Supporting Files */,
 			);
 			path = AirDock;
 			sourceTree = "<group>";
@@ -159,12 +169,32 @@
 		A5C7DCB01870C5140015EB06 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5C7DCCB18715ED60015EB06 /* bg.png */,
+				A5C7DCBF1871572B0015EB06 /* indicators */,
 				A5C7DCB11870C5140015EB06 /* MainMenu.xib */,
 				A5C7DCB31870C5140015EB06 /* Credits.rtf */,
 				A5C7DCB51870C5140015EB06 /* InfoPlist.strings */,
 				A5C7DCB71870C5140015EB06 /* Images.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5C7DCBF1871572B0015EB06 /* indicators */ = {
+			isa = PBXGroup;
+			children = (
+				A5C7DCC01871572B0015EB06 /* off.pdf */,
+				A5C7DCC11871572B0015EB06 /* on.pdf */,
+			);
+			path = indicators;
+			sourceTree = "<group>";
+		};
+		A5C7DCC718715EB70015EB06 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				A5C7DCC818715EB70015EB06 /* IGRDragAndDropView.h */,
+				A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,8 +276,11 @@
 			files = (
 				A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */,
 				A5C7DCBA1870C5140015EB06 /* InfoPlist.strings in Resources */,
+				A5C7DCC21871572B0015EB06 /* off.pdf in Resources */,
 				A5C7DCB91870C5140015EB06 /* Credits.rtf in Resources */,
+				A5C7DCCC18715ED60015EB06 /* bg.png in Resources */,
 				A5C7DCB81870C5140015EB06 /* MainMenu.xib in Resources */,
+				A5C7DCC31871572B0015EB06 /* on.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */,
+				A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */,
 				A5C7DC891870C4620015EB06 /* main.m in Sources */,
 				A5C7DC901870C4620015EB06 /* IGRAppDelegate.m in Sources */,
 			);
