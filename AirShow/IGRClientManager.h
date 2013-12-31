@@ -1,6 +1,6 @@
 //
 //  IGRClientManager.h
-//  AirDock
+//  AirShow
 //
 //  Created by Vitalii Parovishnyk on 12/29/13.
 //  Copyright (c) 2013 IGR Software. All rights reserved.
