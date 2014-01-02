@@ -8,8 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class IGRClientManager;
+@class IGRURLPanel;
+
 @interface IGRAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet IGRClientManager *clientManager;
+@property (assign) IBOutlet IGRURLPanel *urlPanel;
+
+- (void)openUrl:(NSString *)message;
 
 @end

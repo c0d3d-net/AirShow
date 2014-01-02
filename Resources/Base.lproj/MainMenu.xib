@@ -13,6 +13,8 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="IGRAppDelegate">
             <connections>
+                <outlet property="clientManager" destination="TNh-qr-OtN" id="Gre-hS-SLY"/>
+                <outlet property="urlPanel" destination="q9Y-ck-6qS" id="HMm-6c-VoT"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -87,9 +89,15 @@
                                     <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                            <menuItem title="Open File…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
                                     <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open URL…" id="tSg-yZ-qus">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="onOpenURL:" target="Voe-Tx-rLC" id="wXu-k8-nQt"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -109,34 +117,6 @@
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
                                     <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
-                                <connections>
-                                    <action selector="saveDocument:" target="-1" id="teZ-XB-qJY"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
-                                <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Revert to Saved" id="KaW-ft-85H">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="revertDocumentToSaved:" target="-1" id="iJ3-Pv-kwq"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="Din-rz-gC5"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                <connections>
-                                    <action selector="print:" target="-1" id="qaZ-4w-aoO"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -693,30 +673,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <popUpButton verticalHuggingPriority="750" id="aHD-MO-xZ4" userLabel="Devices">
-                                <rect key="frame" x="48" y="314" width="381" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="ukm-n6-LVz" id="EaB-bh-2Vo">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" title="OtherViews" id="qeE-DT-Vj9">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="ukm-n6-LVz"/>
-                                            <menuItem title="Item 2" id="dN8-vU-hBI"/>
-                                            <menuItem title="Item 3" id="qXK-9z-aMD"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <binding destination="h61-m4-9xI" name="content" keyPath="arrangedObjects" id="B9D-Eb-fBz"/>
-                                    <binding destination="h61-m4-9xI" name="contentValues" keyPath="arrangedObjects.name" previousBinding="B9D-Eb-fBz" id="qUO-4D-PBv"/>
-                                    <binding destination="h61-m4-9xI" name="selectedIndex" keyPath="selectionIndex" previousBinding="qUO-4D-PBv" id="As1-vP-N5g"/>
-                                </connections>
-                            </popUpButton>
                             <button canDrawConcurrently="YES" focusRingType="none" id="hLy-J4-TwJ" userLabel="Refresh Button">
-                                <rect key="frame" x="18" y="314" width="26" height="26"/>
+                                <rect key="frame" x="18" y="318" width="24" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSRefreshFreestandingTemplate" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="iaU-7h-Tb5">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="refresh" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="iaU-7h-Tb5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -725,14 +685,14 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rQP-Mu-mCm" userLabel="Image Connected">
-                                <rect key="frame" x="434" y="314" width="26" height="26"/>
+                                <rect key="frame" x="434" y="316" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="on" id="tGv-9I-zxW"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="connected" id="tGv-9I-zxW"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zor-If-r67" userLabel="Image Disconnected">
-                                <rect key="frame" x="434" y="314" width="26" height="26"/>
+                                <rect key="frame" x="434" y="316" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="off" id="JBy-50-Tab"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="disconnected" id="JBy-50-Tab"/>
                                 <connections>
                                     <binding destination="TNh-qr-OtN" name="hidden" keyPath="isConnected" id="HFA-JJ-jCM"/>
                                 </connections>
@@ -760,61 +720,152 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" id="rTC-fN-xuQ" userLabel="Push Button - Previous">
-                                <rect key="frame" x="14" y="63" width="82" height="32"/>
+                            <box autoresizesSubviews="NO" borderType="line" id="coo-Xk-FpR">
+                                <rect key="frame" x="150" y="41" width="174" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="&lt;&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wb7-Wz-Zne">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="172" height="51"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" id="rTC-fN-xuQ" userLabel="Push Button - Previous">
+                                            <rect key="frame" x="18" y="14" width="28" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="previous" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wb7-Wz-Zne">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="f2A-7S-1E5" userLabel="Push Button - Previous">
+                                            <rect key="frame" x="126" y="14" width="28" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="lhC-cE-VS3">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="nhT-UK-DpJ" userLabel="Push Button - Previous">
+                                            <rect key="frame" x="90" y="14" width="28" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="pause" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="h0s-9a-BSM">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="Paa-QW-l5V" userLabel="Push Button - Previous">
+                                            <rect key="frame" x="54" y="14" width="28" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="stop" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="l2e-0u-e9F">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="0bQ-bx-uqV" userLabel="Push Button - Previous">
+                                            <rect key="frame" x="90" y="14" width="28" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PSD-gQ-Gow">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                            <popUpButton verticalHuggingPriority="750" id="glf-jg-lRD">
+                                <rect key="frame" x="48" y="315" width="376" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cuo-7t-XMA" id="wpt-DV-eUr">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" id="uL2-3o-e4C" userLabel="Push Button - Stop">
-                                <rect key="frame" x="96" y="63" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="||||" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k9u-CN-9RM">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" id="xLV-Oz-t6s" userLabel="Push Button - Play">
-                                <rect key="frame" x="178" y="63" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title=">" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YKp-o0-eeT">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" id="Ug6-ah-nPz" userLabel="Push Button - Next">
-                                <rect key="frame" x="260" y="63" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title=">>" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="033-xr-yyq">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6xD-AT-Vu6" userLabel="Image Cover">
-                                <rect key="frame" x="20" y="111" width="186" height="186"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="CEd-99-Ccf"/>
-                            </imageView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Ehg-wV-MxN">
-                                <rect key="frame" x="212" y="229" width="250" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="hKp-Xk-LaI">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                    <menu key="menu" title="OtherViews" id="J4X-aJ-A1b">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="cuo-7t-XMA"/>
+                                            <menuItem title="Item 2" id="Vau-s5-6SY"/>
+                                            <menuItem title="Item 3" id="mPe-92-yOF"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="h61-m4-9xI" name="content" keyPath="arrangedObjects" id="9ig-AJ-1eF"/>
+                                    <binding destination="h61-m4-9xI" name="contentValues" keyPath="arrangedObjects.name" previousBinding="9ig-AJ-1eF" id="oSM-Dq-wco"/>
+                                    <binding destination="h61-m4-9xI" name="selectedIndex" keyPath="selectionIndex" previousBinding="oSM-Dq-wco" id="Nu1-zX-Hbn"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                     </customView>
                 </subviews>
             </view>
         </window>
+        <window title="Open Media URL" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="q9Y-ck-6qS" customClass="IGRURLPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <rect key="contentRect" x="136" y="189" width="432" height="70"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
+            <view key="contentView" id="pc9-gs-Xe1">
+                <rect key="frame" x="0.0" y="0.0" width="432" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qnO-l0-HNM">
+                        <rect key="frame" x="18" y="23" width="33" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL:" id="M7l-6x-vyf">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="XN3-2c-Gk3">
+                        <rect key="frame" x="57" y="20" width="299" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://movie.mp4" drawsBackground="YES" id="LfZ-cs-72d">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button id="YQo-JN-MEI">
+                        <rect key="frame" x="364" y="20" width="20" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="open" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OeU-NN-zNu">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onOpenUrl:" target="q9Y-ck-6qS" id="U4Z-iG-Tp4"/>
+                        </connections>
+                    </button>
+                    <button id="9fc-bL-T21">
+                        <rect key="frame" x="392" y="20" width="20" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="cancel" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="kFC-eL-gDQ">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="onCancel:" target="q9Y-ck-6qS" id="kfD-J4-5Rx"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="rollbackDelegate" destination="Voe-Tx-rLC" id="dNo-Bg-td0"/>
+                <outlet property="urlField" destination="XN3-2c-Gk3" id="3cA-02-j8E"/>
+            </connections>
+        </window>
     </objects>
     <resources>
-        <image name="NSRefreshFreestandingTemplate" width="14" height="14"/>
-        <image name="off" width="16" height="16"/>
-        <image name="on" width="16" height="16"/>
+        <image name="cancel" width="24" height="24"/>
+        <image name="connected" width="24" height="24"/>
+        <image name="disconnected" width="24" height="24"/>
+        <image name="next" width="32" height="32"/>
+        <image name="open" width="24" height="24"/>
+        <image name="pause" width="32" height="32"/>
+        <image name="play" width="32" height="32"/>
+        <image name="previous" width="32" height="32"/>
+        <image name="refresh" width="24" height="24"/>
+        <image name="stop" width="32" height="32"/>
     </resources>
 </document>

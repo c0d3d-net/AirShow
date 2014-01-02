@@ -7,13 +7,16 @@
 //
 
 #import "IGRClientManager.h"
+#import "AsyncSocket.h"
 
 @interface IGRClientManager ()
 
 @property (readwrite, strong) NSNetServiceBrowser *browser;
 @property (readwrite, strong) NSMutableArray *services;
 @property (readwrite, assign) BOOL isConnected;
+@property (readwrite, assign) BOOL isReady;
 @property (readwrite, strong) NSNetService *connectedService;
+@property (readwrite, strong) AsyncSocket *socket;
 
 @end
 
@@ -25,6 +28,8 @@
     _browser = [NSNetServiceBrowser new];
     _browser.delegate = self;
     _isConnected = NO;
+	_isReady = NO;
+	_socket = nil;
 	
 	[self search:nil];
 }
@@ -45,7 +50,15 @@
 		remoteService.delegate = self;
 		[remoteService resolveWithTimeout:0];
 	}
+}
+
+- (void)sendRawData:(NSData *)data
+{
+	self.isReady = NO;
 	
+	self.socket.delegate = self;
+	[self.socket writeData:data withTimeout:20 tag:1];
+	[self.socket readDataWithTimeout:20.0 tag:1];
 }
 
 - (void)disconnectFromDevice
@@ -57,7 +70,9 @@
     }
 	
     self.connectedService = nil;
-    
+	self.socket = nil;
+	self.isConnected = NO;
+	self.isReady = NO;
 }
 
 #pragma mark - Net Service Browser Delegate Methods
@@ -86,6 +101,7 @@
     if ( aService == self.connectedService )
 	{
 		self.isConnected = NO;
+		self.isReady = NO;
 	}
 }
 
@@ -97,6 +113,11 @@
 	
     self.isConnected = YES;
     self.connectedService = aService;
+	
+	self.isReady = NO;
+	
+	self.socket = [[AsyncSocket alloc] initWithDelegate:self];
+    [self.socket connectToHost:self.connectedService.hostName onPort:self.connectedService.port error:NULL];
 }
 
 - (void)netService:(NSNetService *)aService didNotResolve:(NSDictionary *)errorDict
@@ -110,6 +131,31 @@
     {
 		[self connect:nil];
     }
+}
+
+#pragma mark - AsyncSocketDelegate
+
+- (void)onSocket:(AsyncSocket *)socket didConnectToHost:(NSString *)host port:(UInt16)port
+{
+    if (![self.socket isEqual:socket])
+	{
+        NSLog(@"Ignoring %s from socket %@; socket does not match _connecting device %@", __func__, socket,
+              self.connectedService);
+		
+        return;
+    }
+	
+	self.isReady = YES;
+	NSLog(@"%s: Socket opened successful",__func__);
+}
+
+- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+	self.isReady = YES;
+	
+	NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	
+	NSLog(@"Message: %@", message);
 }
 
 @end

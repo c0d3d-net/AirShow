@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5459C4E1875D46900CA69C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A5459B9C1875D46900CA69C1 /* AsyncSocket.m */; };
+		A5459CAC1875F80600CA69C1 /* IGRURLPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5459CAB1875F80600CA69C1 /* IGRURLPanel.m */; };
 		A5C7DC7D1870C4620015EB06 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C7DC7C1870C4620015EB06 /* Cocoa.framework */; };
 		A5C7DC891870C4620015EB06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DC881870C4620015EB06 /* main.m */; };
 		A5C7DC901870C4620015EB06 /* IGRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DC8F1870C4620015EB06 /* IGRAppDelegate.m */; };
@@ -19,8 +21,6 @@
 		A5C7DCBA1870C5140015EB06 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB51870C5140015EB06 /* InfoPlist.strings */; };
 		A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB71870C5140015EB06 /* Images.xcassets */; };
 		A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */; };
-		A5C7DCC21871572B0015EB06 /* off.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCC01871572B0015EB06 /* off.pdf */; };
-		A5C7DCC31871572B0015EB06 /* on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCC11871572B0015EB06 /* on.pdf */; };
 		A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5459B9B1875D46900CA69C1 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = RunLoop/AsyncSocket.h; sourceTree = "<group>"; };
+		A5459B9C1875D46900CA69C1 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = RunLoop/AsyncSocket.m; sourceTree = "<group>"; };
+		A5459CAA1875F80600CA69C1 /* IGRURLPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRURLPanel.h; sourceTree = "<group>"; };
+		A5459CAB1875F80600CA69C1 /* IGRURLPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRURLPanel.m; sourceTree = "<group>"; };
 		A5C7DC791870C4620015EB06 /* AirShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C7DC7C1870C4620015EB06 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A5C7DC7F1870C4620015EB06 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -56,8 +60,6 @@
 		A5C7DCB71870C5140015EB06 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRClientManager.h; sourceTree = "<group>"; };
 		A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRClientManager.m; sourceTree = "<group>"; };
-		A5C7DCC01871572B0015EB06 /* off.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = off.pdf; sourceTree = "<group>"; };
-		A5C7DCC11871572B0015EB06 /* on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = on.pdf; sourceTree = "<group>"; };
 		A5C7DCC818715EB70015EB06 /* IGRDragAndDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRDragAndDropView.h; sourceTree = "<group>"; };
 		A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRDragAndDropView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,10 +85,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5459AB31875D46800CA69C1 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				A5459AB41875D46800CA69C1 /* CocoaAsyncSocket */,
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		A5459AB41875D46800CA69C1 /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A5459B9B1875D46900CA69C1 /* AsyncSocket.h */,
+				A5459B9C1875D46900CA69C1 /* AsyncSocket.m */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
 		A5C7DC701870C4620015EB06 = {
 			isa = PBXGroup;
 			children = (
+				A5459AB31875D46800CA69C1 /* Externals */,
 				A5C7DC821870C4620015EB06 /* AirDock */,
+				A5C7DC831870C4620015EB06 /* Supporting Files */,
 				A5C7DCB01870C5140015EB06 /* Resources */,
 				A5C7DCA01870C4620015EB06 /* AirDockTests */,
 				A5C7DC7B1870C4620015EB06 /* Frameworks */,
@@ -131,7 +152,8 @@
 				A5C7DC8F1870C4620015EB06 /* IGRAppDelegate.m */,
 				A5C7DCBC1870C7500015EB06 /* IGRClientManager.h */,
 				A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */,
-				A5C7DC831870C4620015EB06 /* Supporting Files */,
+				A5459CAA1875F80600CA69C1 /* IGRURLPanel.h */,
+				A5459CAB1875F80600CA69C1 /* IGRURLPanel.m */,
 			);
 			name = AirDock;
 			path = AirShow;
@@ -145,6 +167,7 @@
 				A5C7DC8A1870C4620015EB06 /* AirShow-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = AirShow;
 			sourceTree = "<group>";
 		};
 		A5C7DCA01870C4620015EB06 /* AirDockTests */ = {
@@ -168,22 +191,12 @@
 		A5C7DCB01870C5140015EB06 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A5C7DCBF1871572B0015EB06 /* indicators */,
 				A5C7DCB11870C5140015EB06 /* MainMenu.xib */,
 				A5C7DCB31870C5140015EB06 /* Credits.rtf */,
 				A5C7DCB51870C5140015EB06 /* InfoPlist.strings */,
 				A5C7DCB71870C5140015EB06 /* Images.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		A5C7DCBF1871572B0015EB06 /* indicators */ = {
-			isa = PBXGroup;
-			children = (
-				A5C7DCC01871572B0015EB06 /* off.pdf */,
-				A5C7DCC11871572B0015EB06 /* on.pdf */,
-			);
-			path = indicators;
 			sourceTree = "<group>";
 		};
 		A5C7DCC718715EB70015EB06 /* CustomView */ = {
@@ -255,6 +268,7 @@
 			knownRegions = (
 				en,
 				Base,
+				English,
 			);
 			mainGroup = A5C7DC701870C4620015EB06;
 			productRefGroup = A5C7DC7A1870C4620015EB06 /* Products */;
@@ -274,10 +288,8 @@
 			files = (
 				A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */,
 				A5C7DCBA1870C5140015EB06 /* InfoPlist.strings in Resources */,
-				A5C7DCC21871572B0015EB06 /* off.pdf in Resources */,
 				A5C7DCB91870C5140015EB06 /* Credits.rtf in Resources */,
 				A5C7DCB81870C5140015EB06 /* MainMenu.xib in Resources */,
-				A5C7DCC31871572B0015EB06 /* on.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +311,9 @@
 				A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */,
 				A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */,
 				A5C7DC891870C4620015EB06 /* main.m in Sources */,
+				A5459C4E1875D46900CA69C1 /* AsyncSocket.m in Sources */,
 				A5C7DC901870C4620015EB06 /* IGRAppDelegate.m in Sources */,
+				A5459CAC1875F80600CA69C1 /* IGRURLPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
