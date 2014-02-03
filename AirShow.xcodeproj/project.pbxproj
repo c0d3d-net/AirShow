@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5458BD818775B03009EFBB9 /* IGRContentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5458BD718775B03009EFBB9 /* IGRContentHelper.m */; };
 		A5459C4E1875D46900CA69C1 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A5459B9C1875D46900CA69C1 /* AsyncSocket.m */; };
 		A5459CAC1875F80600CA69C1 /* IGRURLPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5459CAB1875F80600CA69C1 /* IGRURLPanel.m */; };
 		A5C7DC7D1870C4620015EB06 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C7DC7C1870C4620015EB06 /* Cocoa.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5458BD618775B03009EFBB9 /* IGRContentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRContentHelper.h; sourceTree = "<group>"; };
+		A5458BD718775B03009EFBB9 /* IGRContentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRContentHelper.m; sourceTree = "<group>"; };
 		A5459B9B1875D46900CA69C1 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = RunLoop/AsyncSocket.h; sourceTree = "<group>"; };
 		A5459B9C1875D46900CA69C1 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = RunLoop/AsyncSocket.m; sourceTree = "<group>"; };
 		A5459CAA1875F80600CA69C1 /* IGRURLPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRURLPanel.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */,
 				A5459CAA1875F80600CA69C1 /* IGRURLPanel.h */,
 				A5459CAB1875F80600CA69C1 /* IGRURLPanel.m */,
+				A5458BD618775B03009EFBB9 /* IGRContentHelper.h */,
+				A5458BD718775B03009EFBB9 /* IGRContentHelper.m */,
 			);
 			name = AirDock;
 			path = AirShow;
@@ -310,6 +315,7 @@
 			files = (
 				A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */,
 				A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */,
+				A5458BD818775B03009EFBB9 /* IGRContentHelper.m in Sources */,
 				A5C7DC891870C4620015EB06 /* main.m in Sources */,
 				A5459C4E1875D46900CA69C1 /* AsyncSocket.m in Sources */,
 				A5C7DC901870C4620015EB06 /* IGRAppDelegate.m in Sources */,

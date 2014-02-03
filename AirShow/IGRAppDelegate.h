@@ -17,6 +17,6 @@
 @property (assign) IBOutlet IGRClientManager *clientManager;
 @property (assign) IBOutlet IGRURLPanel *urlPanel;
 
-- (void)openUrl:(NSString *)message;
+- (void)openUrl:(NSString *)anURL;
 
 @end

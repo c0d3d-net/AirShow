@@ -10,6 +10,7 @@
 #import "IGRClientManager.h"
 #import "AsyncSocket.h"
 #import "IGRURLPanel.h"
+#import "IGRContentHelper.h"
 
 @interface IGRAppDelegate ()
 
@@ -22,20 +23,14 @@
 	// Insert code here to initialize your application
 }
 
-- (void)openUrl:(NSString *)message
+- (void)openUrl:(NSString *)anURL
 {
 	while (!self.clientManager.isReady)
 	{}
 	
-	NSString *body = [[NSString alloc] initWithFormat:@"Content-Location: %@\r\n"
-					  "Start-Position: 0\r\n\r\n", message];
-	NSUInteger length = [body length];
+	NSString *message = [IGRContentHelper contentForURL:anURL];
 	
-	NSString *_message = [[NSString alloc] initWithFormat:@"POST /play HTTP/1.1\r\n"
-						 "Content-Length: %lu\r\n"
-						 "User-Agent: MediaControl/1.0\r\n\r\n%@", (unsigned long)length, body];
-	
-	[self.clientManager sendRawData:[_message dataUsingEncoding:NSUTF8StringEncoding]];
+	[self.clientManager sendRawData:[message dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (IBAction)onOpenURL:(id)sender

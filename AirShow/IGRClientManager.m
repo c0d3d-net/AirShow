@@ -8,6 +8,7 @@
 
 #import "IGRClientManager.h"
 #import "AsyncSocket.h"
+#import "IGRContentHelper.h"
 
 @interface IGRClientManager ()
 
@@ -144,6 +145,11 @@
 		
         return;
     }
+	
+	if (self.isConnected && !self.isReady)
+	{
+		[self sendRawData:[[IGRContentHelper contentForReverse] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
 	
 	self.isReady = YES;
 	NSLog(@"%s: Socket opened successful",__func__);
