@@ -19,3 +19,9 @@ DerivedData
 
 #CocoaPods
 Pods
+
+Externals/FFmpeg/logffmpeg.txt
+Externals/FFmpeg/bin
+Externals/FFmpeg/include
+Externals/FFmpeg/lib
+Externals/FFmpeg/share

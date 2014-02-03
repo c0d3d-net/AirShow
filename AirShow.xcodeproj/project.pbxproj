@@ -23,6 +23,8 @@
 		A5C7DCBB1870C5140015EB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C7DCB71870C5140015EB06 /* Images.xcassets */; };
 		A5C7DCBE1870C7500015EB06 /* IGRClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */; };
 		A5C7DCCA18715EB70015EB06 /* IGRDragAndDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */; };
+		A5F9C16118A021F30071E487 /* ffmpeg in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5F9C15A18A0212B0071E487 /* ffmpeg */; };
+		A5F9C16218A021F30071E487 /* ffprobe in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5F9C15B18A0212B0071E487 /* ffprobe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,20 @@
 			remoteInfo = AirDock;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5F9C16018A021C50071E487 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ffmpeg;
+			dstSubfolderSpec = 7;
+			files = (
+				A5F9C16118A021F30071E487 /* ffmpeg in CopyFiles */,
+				A5F9C16218A021F30071E487 /* ffprobe in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A5458BD618775B03009EFBB9 /* IGRContentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRContentHelper.h; sourceTree = "<group>"; };
@@ -65,6 +81,9 @@
 		A5C7DCBD1870C7500015EB06 /* IGRClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRClientManager.m; sourceTree = "<group>"; };
 		A5C7DCC818715EB70015EB06 /* IGRDragAndDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRDragAndDropView.h; sourceTree = "<group>"; };
 		A5C7DCC918715EB70015EB06 /* IGRDragAndDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRDragAndDropView.m; sourceTree = "<group>"; };
+		A5F9C15A18A0212B0071E487 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
+		A5F9C15B18A0212B0071E487 /* ffprobe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffprobe; sourceTree = "<group>"; };
+		A5F9C15F18A021970071E487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +110,7 @@
 		A5459AB31875D46800CA69C1 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				A5F9C15818A0204C0071E487 /* FFmpeg */,
 				A5459AB41875D46800CA69C1 /* CocoaAsyncSocket */,
 			);
 			path = Externals;
@@ -213,6 +233,24 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		A5F9C15818A0204C0071E487 /* FFmpeg */ = {
+			isa = PBXGroup;
+			children = (
+				A5F9C15918A0212B0071E487 /* bin */,
+			);
+			name = FFmpeg;
+			sourceTree = "<group>";
+		};
+		A5F9C15918A0212B0071E487 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				A5F9C15A18A0212B0071E487 /* ffmpeg */,
+				A5F9C15B18A0212B0071E487 /* ffprobe */,
+			);
+			name = bin;
+			path = FFmpeg/bin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5C7DCAA1870C4620015EB06 /* Build configuration list for PBXNativeTarget "AirShow" */;
 			buildPhases = (
+				A5F9C14F18A00D150071E487 /* Build FFmpeg */,
 				A5C7DC751870C4620015EB06 /* Sources */,
 				A5C7DC761870C4620015EB06 /* Frameworks */,
 				A5C7DC771870C4620015EB06 /* Resources */,
+				A5F9C16018A021C50071E487 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -308,6 +348,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A5F9C14F18A00D150071E487 /* Build FFmpeg */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build FFmpeg";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "needcompile=1\nfilepath=\"${SRCROOT}/Externals/FFmpeg\"\nfilepathsource=\"${SRCROOT}/Externals/FFmpeg/FFmpeg\"\nfilename=\"ffmpeg\"\n\n#find ${filepath} -name ${filename} -type f -mtime +1 -delete 2>/dev/null\n\nif [ -f \"${filepath}/bin/${filename}\" ]\nthen\necho \"${filename} already exists\"\nneedcompile=0\nfi\n\nif [ ${needcompile} -eq 1 ]\nthen\necho \"Compiling ${filename}\"\n\ncd ${filepathsource}\n./configure --logfile=${filepath}/logffmpeg.txt --disable-doc --enable-ffmpeg --disable-ffplay --disable-ffserver --enable-version3 --prefix=\"${filepath}\" --disable-debug --enable-swscale --disable-yasm --disable-bzlib --enable-gpl --enable-nonfree --target-os=darwin --disable-mmx\n\ntime make -j9 && make install\n\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A5C7DC751870C4620015EB06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -354,6 +411,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5C7DCB21870C5140015EB06 /* Base */,
+				A5F9C15F18A021970071E487 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
