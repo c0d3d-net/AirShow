@@ -25,7 +25,27 @@
 {
 	NSString *body = [[NSString alloc] initWithFormat:@"Content-Location: %@\r\n"
 													   "Start-Position: 0\r\n\r\n", anUrl];
+		
+	NSString *content = [IGRContentHelper prepareCommand:COMMAND_PLAY body:body];
 	
+	return content;
+}
+
++ (NSString*)contentForLocalFile:(NSString*)aFilePath address:(NSString*)addres port:(NSUInteger)port
+{
+	NSString *userFolder = [@"~" stringByExpandingTildeInPath];
+	NSRange range = [aFilePath rangeOfString:userFolder];
+	
+	NSString *newFilePath = aFilePath;
+
+	if (range.location != NSNotFound)
+	{
+		newFilePath = [aFilePath substringFromIndex:(range.location + range.length)];
+	}
+	
+	NSString *body = [[NSString alloc] initWithFormat:@"Content-Location: http://%@:%lu%@\r\n"
+					  "Start-Position: 0\r\n\r\n", addres, (unsigned long)port, newFilePath];
+		
 	NSString *content = [IGRContentHelper prepareCommand:COMMAND_PLAY body:body];
 	
 	return content;
@@ -51,9 +71,12 @@
 	NSUInteger length = [aBody length];
 	
 	NSString* message = [[NSString alloc] initWithFormat:@"%@"
+						 "User-Agent: iTunes/10.2.1 (Macintosh; Intel Mac OS X 10.7) AppleWebKit/534.20.8\r\n"
 						 "Content-Length: %lu\r\n"
-						 "User-Agent: AirShow/1.0\r\n\r\n"
+						 @"Content-Type: text/parameters\r\n\r\n"
 						 "%@", aCommand, (unsigned long)length, aBody];
+	
+	DDLogInfo(@"Message to AppleTV: %@", message);
 	
 	return message;
 }

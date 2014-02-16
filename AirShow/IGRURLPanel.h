@@ -10,7 +10,7 @@
 
 @class IGRAppDelegate;
 
-@interface IGRURLPanel : NSPanel
+@interface IGRURLPanel : NSPanel <NSTextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet IGRAppDelegate *rollbackDelegate;
 

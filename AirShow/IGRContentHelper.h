@@ -12,5 +12,6 @@
 
 + (NSString*)contentForReverse;
 + (NSString*)contentForURL:(NSString*)anUrl;
++ (NSString*)contentForLocalFile:(NSString*)aFilePath address:(NSString*)addres port:(NSUInteger)port;
 
 @end

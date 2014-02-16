@@ -148,11 +148,13 @@
 	
 	if (self.isConnected && !self.isReady)
 	{
-		[self sendRawData:[[IGRContentHelper contentForReverse] dataUsingEncoding:NSUTF8StringEncoding]];
+		//[self sendRawData:[[IGRContentHelper contentForReverse] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
 	
 	self.isReady = YES;
 	NSLog(@"%s: Socket opened successful",__func__);
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"Test" object:nil userInfo:nil];
 }
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag

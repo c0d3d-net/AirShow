@@ -39,4 +39,23 @@
 									 returnCode: NSCancelButton];
 }
 
+- (void)controlTextDidEndEditing:(NSNotification *)aNotification
+{
+	NSDictionary *dict = [aNotification userInfo]; // get the user info dictionary from the notification
+	NSNumber *reason = [dict objectForKey: @"NSTextMovement"]; // get the text movement number from the dictionary
+	int code = [reason intValue]; // get the text movement code
+	
+	if (code == NSReturnTextMovement)
+	{
+		if (self.urlField.stringValue.length > 10)
+		{
+			[self onOpenUrl:nil];
+		}
+	}
+	else if (code == NSTabTextMovement)
+	{
+		
+	}
+}
+
 @end

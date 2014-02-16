@@ -6,4 +6,9 @@
 
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
+
+	#import "DDLog.h"
+	#import "DDTTYLogger.h"
 #endif
+
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;

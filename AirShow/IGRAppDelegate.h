@@ -13,9 +13,11 @@
 
 @interface IGRAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet IGRClientManager *clientManager;
-@property (assign) IBOutlet IGRURLPanel *urlPanel;
+@property (assign) IBOutlet NSWindow	*window;
+@property (assign) IBOutlet NSPopover	*popover;
+
+@property (assign) IBOutlet IGRClientManager	*clientManager;
+@property (assign) IBOutlet IGRURLPanel			*urlPanel;
 
 - (void)openUrl:(NSString *)anURL;
 
